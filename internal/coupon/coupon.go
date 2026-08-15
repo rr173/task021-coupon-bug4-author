@@ -291,7 +291,7 @@ func runPipeline(items []Item, coupons []Coupon, floorRateBps int) *Result {
 			res.skip(c.ID, "满减门槛为负")
 			continue
 		}
-		if currentTotal <= c.Threshold {
+		if currentTotal < c.Threshold {
 			res.skip(c.ID, fmt.Sprintf("未达满减门槛 %d（当前 %d）", c.Threshold, currentTotal))
 			continue
 		}
